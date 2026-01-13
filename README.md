@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Craftsmas is an annual gift exchange, Secretive Santa Style, in which all gifts must be crafted by the gift giver using a craft that they have never done before!
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This is a repository hosting the code that runs the web application that allows us to more seamlessly manage our Craftsmas logistics.
