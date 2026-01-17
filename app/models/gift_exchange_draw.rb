@@ -1,0 +1,2 @@
+class GiftExchangeDraw < ApplicationRecord
+end
