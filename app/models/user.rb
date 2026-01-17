@@ -3,6 +3,10 @@ require 'bcrypt'
 class User < ApplicationRecord
   include BCrypt
 
+  has_many :gift_exchanges
+  has_one :wishlist
+  has_many :wishlist_items, through: :wishlist
+
   attr_accessor :password
   before_save :encrypt_password
 
