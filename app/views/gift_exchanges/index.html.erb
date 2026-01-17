@@ -1,0 +1,10 @@
+<h1>A Buncha Different Gift Exchanges</h1>
+
+<% @gift_exchanges.each do |ge| %>
+  <h2>
+    <%= ge.name %>
+  </h2>
+  <p>
+    <%= ge.description %>
+  </p>
+<% end %>
