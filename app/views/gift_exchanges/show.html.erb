@@ -1,0 +1,20 @@
+<h1>Your Cool Gift Exchange</h1>
+<div class="details">
+  <h2>
+    <%= @gift_exchange.name %>
+  </h2>
+  <p>
+    <%= @gift_exchange.description %>
+  </p>
+  <p>
+    <%= @gift_exchange.invite_code %>
+  </p>
+</div>
+
+<div class="users">
+  <h2>People in this Exchange</h2>
+  <% @users.each do |user| %>
+    <li><%=user.name %></li>
+  <% end %>
+</p>
+

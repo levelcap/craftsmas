@@ -1,0 +1,24 @@
+<h1>Create New Gift Exchange</h1>
+<%= form_for @gift_exchange do |f| %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :year %><br />
+    <%= f.number_field :year %>
+  </p>
+  <p>
+    <%= f.label :event_date %><br />
+    <%= f.date_field :event_date %>
+  </p>
+  <p>
+    <%= f.label :draw_date %><br />
+    <%= f.date_field :draw_date %>
+  </p>
+  <p class="button"><%= f.submit %></p>
+<% end %>

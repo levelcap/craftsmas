@@ -1,0 +1,13 @@
+<h1>Whoa You are Joining this Gift Exchange</h1>
+<h2>
+  <%= @gift_exchange.name %>
+</h2>
+<p>
+  <%= @gift_exchange.description %>
+</p>
+
+<%= form_with url: "/gift_exchanges/#{@gift_exchange.id}/add_user", method: :post do |form| %>
+  <%= form.label :email, "Email Address:" %>
+  <%= form.text_field :email  %>
+  <%= form.submit "Join" %>
+<% end %>
