@@ -42,6 +42,8 @@ gem "image_processing", "~> 1.2"
 
 gem "bcrypt", :require => "bcrypt"
 
+gem 'dotenv', groups: [:development, :test]
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -66,3 +68,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "pg", "~> 1.6"
+
+gem "appengine", "~> 0.7.0"
