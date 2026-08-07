@@ -70,5 +70,3 @@ group :test do
 end
 
 gem "pg", "~> 1.1"
-
-gem "appengine", "~> 0.7.0"
