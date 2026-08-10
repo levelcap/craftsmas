@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "sign_up" => "users#new", :as => "sign_up"
   get "join/:invite_code" => "gift_exchanges#join", :as => "join"
 
-  root :to => "users#new"
+  root :to => "welcome#index"
   resources :users
   resources :sessions
   resources :gift_exchanges do
