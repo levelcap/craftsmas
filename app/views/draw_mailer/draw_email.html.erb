@@ -3,13 +3,13 @@
   You have been matched with <strong><%= @match_name %>!
   <br />
 </p>
-<h2>>Q&A with <%= @match_name %></h2>
-<ol>
+<h2>Q&A with <%= @match_name %></h2>
+<ul style="list-style-type: none; padding: 5px;">
   <% @questions.each do |q| %>
     <li><%= q[:question] %></li>
     <li><%= q[:answer] %></li>
   <% end %>
-</ol>
+</ul>
 
 <% if @other %>
   <h2>And a little more about <%= @match_name %></h2>
