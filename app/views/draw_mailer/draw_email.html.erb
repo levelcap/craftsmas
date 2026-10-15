@@ -4,7 +4,7 @@
   <br />
 </p>
 <h2>Q&A with <%= @match_name %></h2>
-<ul style="list-style-type: none; padding: 5px;">
+<ul style="list-style-type: none; padding: 5px; margin-bottom: 10px;">
   <% @questions.each do |q| %>
     <li><strong><%= q[:question] %></strong></li>
     <li><i><%= q[:answer] %><i></li>
@@ -17,3 +17,7 @@
     <%= @other %>
   </p>
 <% end %>
+
+<p>
+If you have any questions about your match, contact Dave or Alissa and we can help you out!
+</p>
