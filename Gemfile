@@ -70,3 +70,5 @@ group :test do
 end
 
 gem "pg", "~> 1.1"
+
+gem "csv", "~> 3.3"
