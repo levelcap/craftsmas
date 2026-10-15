@@ -73,3 +73,5 @@ yarn-debug.log*
 /vendor/bundle
 /tmp
 app.yaml
+
+craftsmas.csv

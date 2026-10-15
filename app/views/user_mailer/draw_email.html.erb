@@ -1,0 +1,19 @@
+<h1>You have a Craftsmas match, <%= @gifter[:name] %></h1>
+<p>
+  You have been matched with <strong><%= @match_name %>!
+  <br />
+</p>
+<h2>>Q&A with <%= @match_name %></h2>
+<ol>
+  <% @questions.each do |q| %>
+    <li><%= q[:question] %></li>
+    <li><%= q[:answer] %></li>
+  <% end %>
+</ol>
+
+<% if @other %>
+  <h2>And a little more about <%= @match_name %></h2>
+  <p>
+    <%= @other %>
+  </p>
+<% end %>
