@@ -6,8 +6,8 @@
 <h2>Q&A with <%= @match_name %></h2>
 <ul style="list-style-type: none; padding: 5px;">
   <% @questions.each do |q| %>
-    <li><%= q[:question] %></li>
-    <li><%= q[:answer] %></li>
+    <li><strong><%= q[:question] %></strong></li>
+    <li><i><%= q[:answer] %><i></li>
   <% end %>
 </ul>
 
