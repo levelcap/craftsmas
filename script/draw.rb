@@ -27,7 +27,7 @@ class Draw
     end
 
     match_list = Draw::match_users(users)
-    UserMailer.new.draw_email(match: match_list.first, users:).deliver_now
+    DrawMailer.with(match: match_list.first, users:).draw_email.deliver_now
     # match_list.each do |match|
     #   UserMailer.new.draw_email(match:, users:)
     # end
