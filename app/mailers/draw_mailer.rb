@@ -6,8 +6,8 @@ class DrawMailer < ApplicationMailer
     giftee = match[:giftee]
 
     # Create gift exchange draw record for posterity and debugging
-    gifter_user = User.find_by(email: gifter)
-    giftee_user = User.find_by(email: giftee)
+    gifter_user = User.find_by(email: gifter.downcase)
+    giftee_user = User.find_by(email: giftee.downcase)
     exchange = GiftExchange.find(1)
     GiftExchangeDraw.create(gift_exchange: exchange, user: gifter_user, giftee: giftee_user)
 
