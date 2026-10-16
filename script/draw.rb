@@ -52,7 +52,6 @@ class Draw
         ],
         other: row[9],
       }
-      # pp user
       users << user
     end
 
@@ -69,13 +68,21 @@ class Draw
     user_emails = users.map do |user|
       user[:email]
     end
-    already_matched_emails = []
     match_list = []
+    try_draw = true
 
-    user_emails.each do |user_email|
-      matched_email = Draw::potential_match_emails(emails: user_emails, already_matched_emails:, own_email: user_email).sample
-      already_matched_emails << matched_email
-      match_list << { gifter: user_email, giftee: matched_email}
+    while(try_draw)
+      try_draw = false
+      already_matched_emails = []
+      match_list = []
+      user_emails.each do |user_email|
+        matched_email = Draw::potential_match_emails(emails: user_emails, already_matched_emails:, own_email: user_email).sample
+        if matched_email.nil?
+          try_draw = true
+        end
+        already_matched_emails << matched_email
+        match_list << { gifter: user_email, giftee: matched_email}
+      end
     end
 
     return match_list
