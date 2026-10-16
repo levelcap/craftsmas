@@ -1,4 +1,34 @@
 class Draw
+  EXCLUSIONS = {
+    "bchalmer@gmail.com" => ["alissazimmer@gmail.com","cohen.davids@gmail.com"],
+    "lcastanon@gmail.com" => ["benlaverriere@gmail.com"],
+    "Gcastanon@gmail.com" => ["anna.gartsman@gmail.com","anna.gartsman+ezra@gmail.com"],
+    "sixdgreesaway@gmail.com" => ["joey.peter.sbarro@gmail.com"],
+    "alissazimmer@gmail.com" => ["cohen.davids@gmail.com","bchalmer@gmail.com","pmayer.tech@gmail.com"],
+    "cohen.davids@gmail.com" => ["alissazimmer@gmail.com","bchalmer@gmail.com","anna.gartsman@gmail.com"],
+    "joey.peter.sbarro@gmail.com" => ["sixdgreesaway@gmail.com"],
+    "scott.istvan@gmail.com" => ["greg@gregjb.com"],
+    "anna.gartsman@gmail.com" => ["anna.gartsman+ezra@gmail.com","gcastanon@gmail.com","sixdgreesaway@gmail.com"],
+    "anna.gartsman+ezra@gmail.com" => ["gcastanon@gmail.com","anna.gartsman@gmail.com","joey.peter.sbarro@gmail.com"],
+    "paulrgels@gmail.com" => ["greg@gregjb.com"],
+    "greg@gregjb.com" => ["paulrgels@gmail.com","alissazimmer@gmail.com"],
+    "pmayer.tech@gmail.com" => ["pmayer.tech+anthony@gmail.com","ernstjess@gmail.com","bchalmer@gmail.com"],
+    "pmayer.tech+anthony@gmail.com" => ["pmayer.tech@gmail.com","ernstjess@gmail.com"],
+    "ernstjess@gmail.com" => ["pmayer.tech+anthony@gmail.com","pmayer.tech@gmail.com","anna.gartsman+ezra@gmail.com"],
+  }
+
+  def self.exclude
+    csv_contents = CSV.read('exclusions.csv')
+    csv_contents.shift
+    csv_contents.each do |row|
+      ex = row[1].split("|")
+      ex = ex.map do |e|
+        "'#{e.strip}'"
+      end
+      pp "'#{row[0]}' => [#{ex.join(",")}],"
+    end
+  end
+
   def self.draw
     users = []
     csv_contents = CSV.read('craftsmas.csv')
@@ -27,10 +57,10 @@ class Draw
     end
 
     match_list = Draw::match_users(users)
-    DrawMailer.with(match: match_list.first, users:).draw_email.deliver_now
-    # match_list.each do |match|
-    #   UserMailer.new.draw_email(match:, users:)
-    # end
+    # DrawMailer.with(match: match_list.first, users:).draw_email.deliver_now
+    match_list.each do |match|
+      DrawMailer.with(match:, users:).draw_email.deliver_now
+    end
   end
 
   private
@@ -59,7 +89,9 @@ class Draw
   end
 
   def self.user_specific_exclude(already_matched_emails: [], own_email:, excluded_emails:[])
+    exclusions = EXCLUSIONS[own_email]
+
     user_specific = already_matched_emails.clone
-    (user_specific << own_email).uniq
+    (user_specific << exclusions << own_email).flatten.uniq
   end
 end

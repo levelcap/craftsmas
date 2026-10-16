@@ -2,14 +2,14 @@ class DrawMailer < ApplicationMailer
   def draw_email
     match = params[:match]
     users = params[:users]
-    gifter = match[:giter]
+    gifter = match[:gifter]
     giftee = match[:giftee]
     match = users.select do |user|
       user[:email] == giftee
     end.first
 
     @gifter = users.select do |user|
-      user[:email] == giftee
+      user[:email] == gifter
     end.first
 
     @match_name = match[:name]
