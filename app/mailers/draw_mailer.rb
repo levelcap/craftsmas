@@ -23,6 +23,6 @@ class DrawMailer < ApplicationMailer
     @questions = match[:questions]
     @other = match[:other]
 
-    mail(to: "cohen.davids@gmail.com", subject: "Your Craftsmas Match is Here!")
+    mail(to: gifter_user.email, subject: "Your Craftsmas Match is Here!")
   end
 end

@@ -56,7 +56,6 @@ class Draw
     end
 
     match_list = Draw::match_users(users)
-    # DrawMailer.with(match: match_list.first, users:).draw_email.deliver_now
     match_list.each do |match|
       DrawMailer.with(match:, users:).draw_email.deliver_now
     end
